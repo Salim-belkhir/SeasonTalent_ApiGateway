@@ -12,10 +12,12 @@
 	<artifactId>ApiGateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ApiGateway</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Api Gateway for the server</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
+		<maven.compiler.source>19</maven.compiler.source>
+		<maven.compiler.target>19</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,13 +27,23 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-docker-compose</artifactId>
+			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
