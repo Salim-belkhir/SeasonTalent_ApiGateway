@@ -5,4 +5,5 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8023:8023"
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    env_file: .env
