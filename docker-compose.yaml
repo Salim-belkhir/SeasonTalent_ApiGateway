@@ -1,5 +1,6 @@
 services:
   apiGateway:
+    container_name: APIGateway
     image: apigateway:latest
     build:
       context: .
