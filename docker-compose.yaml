@@ -8,3 +8,16 @@ services:
     ports:
       - "${GATEWAY_PORT}:${GATEWAY_PORT}"
     env_file: .env
+
+  authdb:
+    container_name: Auth-Database
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=${AUTH_DB_NAME}'
+    env_file: .env
+    ports:
+      - "${AUTH_DB_PORT}:5432"
+    volumes:
+      - ./authstorage:/data/postgres
+      - ./db_auth_init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: ["-d", "/docker-entrypoint-initdb.d/init.sql"]

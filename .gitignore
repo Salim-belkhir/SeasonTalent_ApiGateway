@@ -37,3 +37,8 @@ build/
 
 ## Environment ##
 .env
+
+
+## Docker ##
+authstorage
+db_auth_init
