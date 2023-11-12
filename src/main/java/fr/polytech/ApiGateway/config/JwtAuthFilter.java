@@ -1,9 +1,11 @@
 package fr.polytech.ApiGateway.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import fr.polytech.ApiGateway.services.UserDetailsServiceCustom;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,13 +20,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 
 
 @Component
+@RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
-    @Autowired
     private JwtUtils jwtUtils;
-
-    @Autowired
-    private UserDetailsServiceCustom userDetailsService;
+    private UserDetailsService userDetailsService;
     
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
