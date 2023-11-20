@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
+    @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -28,6 +28,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 

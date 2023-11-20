@@ -1,18 +1,18 @@
 DROP TABLE IF EXISTS users CASCADE;
 
-CREATE SEQUENCE IF NOT EXISTS user_id_seq;
-
+CREATE SEQUENCE users_seq START 4;
 
 CREATE TABLE users (
-    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
     enabled boolean NOT NULL DEFAULT false,
-    role VARCHAR(50) NOT NULL DEFAULT 'ROLE_USER'
+    role VARCHAR(50) NOT NULL DEFAULT 'ROLE_CANDIDAT'
 );
 
 
-INSERT INTO users (username, password, enabled)
+INSERT INTO users (username, password, enabled, role)
 VALUES
-    ('admin', 'admin', false),
-    ('user', 'user', false),
-    ('ayoub', 'ayoub', false);
+    ('admin', 'admin', false, 'ROLE_ADMIN'),
+    ('user', 'user', false, 'ROLE_CANDIDAT'),
+    ('ayoub', 'ayoub', false, 'ROLE_RECRUTEUR');
